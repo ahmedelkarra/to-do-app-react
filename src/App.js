@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import { createContext, useState } from 'react';
+import Header from './components/header';
+import InfoToDo from './components/infoToDo';
+import SetToDo from './components/setToDo';
 import './App.css';
 
+export const AllTask = createContext(null)
+export const GetInfoAllTask = createContext(null)
+
 function App() {
+  const [allInfo, setAllInfo] = useState(JSON.parse(localStorage.getItem('allTask')) || [])
+  const [getInfoAllTask, setGetInfoAllTask] = useState(allInfo[0] || { task: '', taskBody: '' })
+  // console.log(allInfo);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className="App row justify-content-center bg-primary align-items-center" style={{ height: "100dvh", width: "100dvw" }}>
+      <AllTask.Provider value={{ allInfo, setAllInfo }}>
+        <GetInfoAllTask.Provider value={{ getInfoAllTask, setGetInfoAllTask }}>
+          <Header />
+          <InfoToDo />
+          <SetToDo />
+        </GetInfoAllTask.Provider>
+      </AllTask.Provider>
+    </div >
   );
 }
 

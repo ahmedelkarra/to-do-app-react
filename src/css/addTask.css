@@ -1,0 +1,66 @@
+.mainDiv {
+    position: relative;
+}
+
+.allTask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 25px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.allTask h2 {
+    position: relative;
+    word-wrap: break-word !important;
+    text-wrap: wrap !important;
+    margin: 10px auto;
+    border-radius: 2px 2px 0 0;
+    cursor: pointer;
+    min-height: 50px;
+}
+
+.allTask h2::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 2px;
+    bottom: 0px;
+    left: 0;
+    background-color: white;
+    z-index: 10;
+}
+
+.addButton {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(-50%, -50%) scale(1) rotate(0);
+    z-index: 1000;
+    animation-name: icon;
+    animation-duration: 2s;
+}
+
+.addButton:hover {
+    transform: translate(-50%, -50%) scale(1.1) rotate(0);
+}
+
+@keyframes icon {
+    from {
+        transform: translate(-50%, -50%) scale(1) rotate(0);
+    }
+
+    to {
+        transform: translate(-50%, -50%) scale(1) rotate(360deg);
+    }
+}
+
+
+/* .inputTitle{
+    height: 50px;
+} */
